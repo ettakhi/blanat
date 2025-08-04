@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  createdAt DateTime @default(now()) @db.Date
+  updatedAt DateTime @default(now()) @db.Date
+  likes     Int      @default(0)
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+
+  // Cascade delete when deal is deleted
+  dealId String? @db.ObjectId
+  deal   Deal?   @relation(fields: [dealId], references: [id], onDelete: Cascade)
+
+  // Cascade delete when discussion is deleted
+  discussionId String?     @db.ObjectId
+  discussion   Discussion? @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  accessToken        String
+  accessTokenExpires String?
+  compoundId         String
+  createdAt          DateTime @default(now()) @db.Date
+  updatedAt          DateTime @default(now()) @db.Date
+  providerAccountId  String
+  providerId         String
+  providerType       String
+  refreshToken       String
+  userId             String   @db.ObjectId
+}
+
+model Deal {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  text           String
+  url            String?
+  slug           String?
+  image          String?
+  price          Int?
+  oldPrice       Int?
+  votes          Int       @default(0)
+  commentsCount  Int       @default(0)
+  comments       Comment[]
+  createdAt      DateTime  @default(now()) @db.Date
+  updatedAt      DateTime  @default(now()) @db.Date
+  startAt        DateTime  @default(now()) @db.Date
+  expireAt       DateTime? @db.Date
+  isFreeDelivery Boolean?
+  delivery       Int?
+  codePromo      String?
+  merchantId     String?
+  userId         String    @db.ObjectId
+  user           User      @relation(fields: [userId], references: [id])
+
+  @@fulltext([text, title], map: "text_text_title_text")
+}
+
+model Discussion {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  text          String
+  slug          String?
+  image         String?
+  commentsCount Int       @default(0)
+  votes         Int       @default(0)
+  comments      Comment[]
+  createdAt     DateTime  @default(now()) @db.Date
+  updatedAt     DateTime  @default(now()) @db.Date
+  merchantId    String?
+  userId        String    @db.ObjectId
+  user          User      @relation(fields: [userId], references: [id])
+
+  @@fulltext([text, title], map: "text_text_title_text")
+  @@map("discussions")
+}
+
+model User {
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String
+  username      String
+  description   String?
+  image         String
+  createdAt     DateTime     @default(now()) @db.Date
+  updatedAt     DateTime     @default(now()) @db.Date
+  votesUp       String[]     @default([])
+  votesDown     String[]     @default([])
+  commentsLiked String[]     @default([])
+  isVerified    Boolean      @default(false)
+  emailVerified Boolean?
+  deals         Deal[]
+  discussions   Discussion[]
+  comments      Comment[]
+}
