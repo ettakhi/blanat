@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import Nav from "./Nav";
-import MobileNav from "./MobileNav";
-import { Button } from "@/components/ui/button";
 import { CiCirclePlus, CiUser } from "react-icons/ci";
+import Connect from "@/components/Connect";
+import Nav from "@/components/Navbar/Nav";
+import MobileNav from "@/components/Navbar/MobileNav";
 
 const Header = () => {
   return (
@@ -19,16 +19,13 @@ const Header = () => {
         <div className="hidden md:flex items-center gap-8">
           <Nav />
           <div className="flex items-center gap-1">
-            <Link href="/login">
-              <Button className="cursor-pointer" variant="outline">
-                <CiUser /> login
-              </Button>
-            </Link>
-            <Link href="/sign-up">
-              <Button className="cursor-pointer">
-                <CiCirclePlus /> Sign up
-              </Button>
-            </Link>
+            <Connect>
+              <CiUser /> login
+            </Connect>
+
+            <Connect variant="default">
+              <CiCirclePlus /> Sign up
+            </Connect>
           </div>
         </div>
         {/* mobile nav */}
