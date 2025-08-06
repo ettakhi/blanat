@@ -6,11 +6,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import Connect from "@/components/Connect";
 import Links from "./Links";
+import { auth } from "@/auth";
+import User from "./User";
 
-const MobileNav = () => {
+const MobileNav = async () => {
+  const session = await auth();
+
   return (
     <Sheet>
       <SheetTrigger className="flex justify-center items-center">
@@ -23,7 +26,7 @@ const MobileNav = () => {
           <Link href="/">
             <SheetTitle asChild>
               <h1 className="text-4xl font-semibold">
-                Omra<span className="text-blue-500">.</span>
+                Blanat<span className="text-blue-500">.</span>
               </h1>
             </SheetTitle>
           </Link>
@@ -31,14 +34,17 @@ const MobileNav = () => {
         {/* nav */}
         <nav className="flex flex-col justify-center items-center gap-8">
           <Links />
-          <div className="flex flex-col items-center justify-center gap-2">
-            <Connect className="w-32">
-              <CiUser /> login
-            </Connect>
-            <Connect className="w-32" variant="default">
-              <CiCirclePlus /> Sign up
-            </Connect>
-          </div>
+          {!session?.user && (
+            <div className="flex flex-col items-center justify-center gap-2">
+              <Connect className="w-32">
+                <CiUser /> login
+              </Connect>
+              <Connect className="w-32" variant="default">
+                <CiCirclePlus /> Sign up
+              </Connect>
+            </div>
+          )}
+          <User />
         </nav>
       </SheetContent>
     </Sheet>
