@@ -15,9 +15,9 @@ const Temperature = ({
         className
       )}
     >
-      <HiArrowUp className="text-blue-500 h-6 w-6 hover:bg-blue-200 p-1 rounded-full cursor-pointer border" />
+      <HiArrowUp className="text-blue-500 h-6 w-6 hover:bg-blue-200 p-1 rounded-full cursor-pointer border hover:scale-125" />
       <small className="text-orange-500">{votes}°</small>
-      <HiArrowDown className="text-red-500 h-6 w-6 hover:bg-red-200 p-1 rounded-full cursor-pointer border" />
+      <HiArrowDown className="text-red-500 h-6 w-6 hover:bg-red-200 p-1 rounded-full cursor-pointer border hover:scale-125" />
     </div>
   );
 };

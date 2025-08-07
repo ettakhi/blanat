@@ -7,6 +7,7 @@ import PostedTime from "./PostedTime";
 import { getInitials } from "@/lib/user";
 import { isExpired } from "@/lib/utils/date";
 import { cn } from "@/lib/utils";
+import CardActions from "./CardActions";
 
 export type tDealCard = {
   title: string;
@@ -19,6 +20,7 @@ export type tDealCard = {
   postedDate: Date;
   expiryDate?: Date;
   deliveryFee?: number;
+  commentsCount: number;
   sharedBy: {
     username: string;
     img: string;
@@ -38,6 +40,7 @@ const DealCard = ({
   sharedBy,
   storeName,
   postedDate,
+  commentsCount,
 }: tDealCard) => {
   const expired = isExpired(expiryDate);
 
@@ -51,7 +54,7 @@ const DealCard = ({
       )}
     >
       {/* side thumbnail */}
-      <div className="relative col-span-1 items-center justify-between flex flex-col h-full p-2">
+      <div className="relative col-span-1 items-center justify-between md:justify-center flex flex-col h-full p-2">
         <Temperature votes={votes} className="flex md:hidden w-full" />
         <div className="flex items-center justify-center py-2">
           <Image
@@ -77,10 +80,13 @@ const DealCard = ({
         </div>
         <div className="w-full h-full flex flex-col">
           <div
-            className={cn(`font-semibold line-clamp-1 md:line-clamp-2 mt-2`, {
-              "text-gray-500": expired,
-              "text-gray-900": !expired,
-            })}
+            className={cn(
+              `font-semibold hover:text-blue-400 line-clamp-1 md:line-clamp-2 mt-2`,
+              {
+                "text-gray-500": expired,
+                "text-gray-900": !expired,
+              }
+            )}
           >
             {title}
           </div>
@@ -139,7 +145,7 @@ const DealCard = ({
             {description}
           </div>
           <div className="flex items-center justify-between mt-auto">
-            <div id="actions">shared</div>
+            <CardActions commentsCount={commentsCount} />
             <div id="share">
               <Button
                 className="cursor-pointer rounded-2xl text-white bg-blue-600 hover:bg-blue-700"

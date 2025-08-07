@@ -42,6 +42,7 @@ export const DEALS_MOCK: tDealCard[] = [
       "Get the best deal on this amazing product! Limited time offer.",
     thumbnail: "https://picsum.photos/200/300?random=1",
     storeName: "Marjane",
+    commentsCount: 5,
     postedDate: ONE_MONTH_AGO,
     sharedBy: {
       username: "ettakhidfasdfdsafdfasdfdsafdsfafddff",
@@ -56,6 +57,7 @@ export const DEALS_MOCK: tDealCard[] = [
     votes: 344,
     price: 23,
     oldPrice: 29,
+    commentsCount: 49,
     deliveryFee: 23,
     postedDate: ONE_WEEK_AGO,
     storeName: "Carrefour",
@@ -71,6 +73,7 @@ export const DEALS_MOCK: tDealCard[] = [
     votes: -100,
     description:
       "Get the best deal on this amazing product! Limited time offer.",
+    commentsCount: 25,
     price: 19,
     storeName: "Aswak Assalam",
     postedDate: ONE_MONTH_AGO,
@@ -88,6 +91,7 @@ export const DEALS_MOCK: tDealCard[] = [
       "Get the best deal on this amazing product! Limited time offer.",
     price: 39.99,
     votes: 88,
+    commentsCount: 0,
     oldPrice: 45,
     deliveryFee: 5,
     postedDate: ONE_DAY_AGO,
@@ -106,6 +110,7 @@ export const DEALS_MOCK: tDealCard[] = [
     votes: 150,
     price: 30,
     storeName: "Bim",
+    commentsCount: 2,
     postedDate: ONE_MONTH_AGO,
     thumbnail: "https://picsum.photos/200/300?random=5",
     sharedBy: {
