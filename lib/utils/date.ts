@@ -171,9 +171,11 @@ export function smartDate(
  * @returns True if the date has expired, false otherwise
  */
 export function isExpired(
-  date: Date | string | number,
+  date: Date | string | number | undefined,
   referenceDate?: Date | string | number
 ): boolean {
+  if (!date) return false; // Handle undefined or null date
+
   const targetDate = new Date(date);
   const refDate = referenceDate ? new Date(referenceDate) : new Date();
 
@@ -192,7 +194,7 @@ export function isExpired(
  * @returns A formatted string indicating expiration status
  */
 export function expiredFormatDate(
-  date: Date | string | number,
+  date: Date | string | number | undefined,
   options: {
     locale?: string;
     expiredText?: string;
@@ -201,6 +203,8 @@ export function expiredFormatDate(
     useRelativeTime?: boolean;
   } = {}
 ): string {
+  if (!date) return "";
+
   const {
     locale = "en",
     expiredText = "Expired",
