@@ -1,14 +1,15 @@
 import { auth } from "@/auth";
 import DealCard from "@/components/deals/DealCard";
+import { DEAL_DESCRIPTION, DEALS_MOCK, IMG_HAKIM } from "@/lib/constants";
 
 export default async function Home() {
   const session = await auth();
   console.log("session", session);
 
   return (
-    <div className="">
-      {[...Array(20)].map((_, index) => (
-        <DealCard key={index} />
+    <div>
+      {DEALS_MOCK.map((deal, index) => (
+        <DealCard key={index} {...deal} />
       ))}
     </div>
   );
