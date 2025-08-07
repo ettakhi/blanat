@@ -77,7 +77,7 @@ const DealCard = ({
         </div>
         <div className="w-full h-full flex flex-col">
           <div
-            className={cn(`font-semibold line-clamp-2 mt-2`, {
+            className={cn(`font-semibold line-clamp-1 md:line-clamp-2 mt-2`, {
               "text-gray-500": expired,
               "text-gray-900": !expired,
             })}
@@ -113,23 +113,33 @@ const DealCard = ({
                 {storeName}
               </span>
             </div>
-            <div className="text-sm text-gray-600 mt-1 flex items-center gap-2">
-              <span className="italic">
+            <div className="flex items-center gap-2 mt-1 text-sm text-gray-600 min-w-0">
+              {/* label */}
+              <span className="italic flex-shrink-0">
                 <span className="hidden md:inline-block">shared</span> by
               </span>
+
+              {/* avatar + name bubble */}
               <span
-                className={`flex items-center gap-1 border rounded-full pe-2 cursor-pointer ${
-                  expired
-                    ? "bg-gray-200 hover:bg-gray-300"
-                    : "bg-gray-100 hover:bg-gray-200"
-                }`}
+                className={cn(
+                  "flex items-center gap-1 border rounded-full pe-2 cursor-pointer min-w-0",
+                  {
+                    "bg-gray-200 hover:bg-gray-300": expired,
+                    "bg-gray-100 hover:bg-gray-200": !expired,
+                  }
+                )}
               >
                 <AvatarImg
+                  // className="w-5 h-5 shrink-0" /* avatar never shrinks */
                   img={sharedBy.img}
                   username={sharedBy.username}
                   fallback={getInitials(sharedBy.username)}
                 />
-                <span>{sharedBy.username}</span>
+
+                {/* username uses whatever space is left, then ellipses */}
+                <span className="flex-1 min-w-0 truncate">
+                  {sharedBy.username}
+                </span>
               </span>
             </div>
           </div>

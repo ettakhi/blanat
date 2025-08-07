@@ -44,7 +44,7 @@ export const DEALS_MOCK: tDealCard[] = [
     storeName: "Marjane",
     postedDate: ONE_MONTH_AGO,
     sharedBy: {
-      username: "ettakhi",
+      username: "ettakhidfasdfdsafdfasdfdsafdsfafddff",
       img: IMG_HAKIM,
       id: "user-1",
     },

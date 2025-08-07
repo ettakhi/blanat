@@ -15,7 +15,7 @@ const AvatarImg = ({
   return (
     <Avatar className="w-6 h-6">
       <AvatarImage src={img || ""} alt={`@${username}`} />
-      <AvatarFallback className="">
+      <AvatarFallback>
         <small>{fallback}</small>
       </AvatarFallback>
     </Avatar>
