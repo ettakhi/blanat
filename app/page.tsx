@@ -6,8 +6,10 @@ export default async function Home() {
   console.log("session", session);
 
   return (
-    <div>
-      <DealCard />
+    <div className="">
+      {[...Array(20)].map((_, index) => (
+        <DealCard key={index} />
+      ))}
     </div>
   );
 }

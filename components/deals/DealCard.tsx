@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { CiCircleChevUp, CiCircleChevDown } from "react-icons/ci";
 import {
   HiArrowUp,
   HiArrowDown,
@@ -10,9 +9,9 @@ import {
 import AvatarImg from "../AvatarImg";
 import { IMG_HAKIM } from "@/lib/constants";
 const DealCard = () => (
-  <div className="grid grid-cols-3 md:grid-cols-4 h-60 md:h-64 border border-gray-200 rounded-lg overflow-hidden">
+  <div className="bg-white grid grid-cols-3 md:grid-cols-4 h-60 md:h-64 border border-gray-200 rounded-lg overflow-hidden m-2">
     {/* side thumbnail */}
-    <div className="relative col-span-1 h-full bg-gray-100">
+    <div className="relative col-span-1 h-full">
       <Image
         src="https://i.imgur.com/41Dtd1r.jpeg"
         alt="Deal"
@@ -66,20 +65,20 @@ const DealCard = () => (
         </div>
         <div className="line-clamp-1 md:line-clamp-2 text-sm text-gray-500 mt-2">
           À propos de cet article Hautes performances : Interface PCIe 4.0 Gen4
-          avec NVMe 2.0, capable de gérer jusqu'à 7400 Mo/s en lecture et 6500
-          Mo/s en écriture, idéale pour les gamers et les créateurs de contenu.
-          Meilleure efficacité : Le HMB (Host Memory Buffer) et la mémoire cache
-          SLC garantissent un chargement de jeu plus rapide et un transfert de
-          fichiers plus efficace. Technologie avancée : Equipé du dernier
-          contrôleur PCIe et de la mémoire Flash NAND, pour des performances
-          élevées avec une consommation d'énergie réduite et une dissipation
-          thermique minimale. Espace de stockage généreux : Disponible avec des
-          capacités de stockage plus importantes et une qualité NAND supérieure
-          pour une plus grande durabilité et pour répondre à de multiples
-          besoins de stockage. Contrôle de la température : Intègre une
-          limitation thermique et une gestion de l'énergie pour réguler
-          automatiquement la température et surmonter les pics de chaleur lors
-          de charges de travail lourdes.
+          avec NVMe 2.0, capable de gérer jusqu&apos;à 7400 Mo/s en lecture et
+          6500 Mo/s en écriture, idéale pour les gamers et les créateurs de
+          contenu. Meilleure efficacité : Le HMB (Host Memory Buffer) et la
+          mémoire cache SLC garantissent un chargement de jeu plus rapide et un
+          transfert de fichiers plus efficace. Technologie avancée : Equipé du
+          dernier contrôleur PCIe et de la mémoire Flash NAND, pour des
+          performances élevées avec une consommation d&apos;énergie réduite et
+          une dissipation thermique minimale. Espace de stockage généreux :
+          Disponible avec des capacités de stockage plus importantes et une
+          qualité NAND supérieure pour une plus grande durabilité et pour
+          répondre à de multiples besoins de stockage. Contrôle de la
+          température : Intègre une limitation thermique et une gestion de
+          l&apos;énergie pour réguler automatiquement la température et
+          surmonter les pics de chaleur lors de charges de travail lourdes.
         </div>
         <div className="flex items-center justify-between mt-3">
           <div id="actions">shared</div>
