@@ -46,7 +46,7 @@ const DealCard = ({
       className={cn(
         "bg-white grid grid-cols-3 md:grid-cols-4 border border-gray-200 rounded-lg overflow-hidden m-2 cursor-pointer group hover:shadow-md hover:inset-shadow-sm",
         {
-          "opacity-60 grayscale": expired,
+          "opacity-50 grayscale": expired,
         }
       )}
     >
@@ -120,15 +120,7 @@ const DealCard = ({
               </span>
 
               {/* avatar + name bubble */}
-              <span
-                className={cn(
-                  "flex items-center gap-1 border rounded-full pe-2 cursor-pointer min-w-0",
-                  {
-                    "bg-gray-200 hover:bg-gray-300": expired,
-                    "bg-gray-100 hover:bg-gray-200": !expired,
-                  }
-                )}
-              >
+              <span className="flex items-center gap-1 border rounded-full pe-2 cursor-pointer min-w-0 bg-gray-100 hover:bg-gray-200">
                 <AvatarImg
                   // className="w-5 h-5 shrink-0" /* avatar never shrinks */
                   img={sharedBy.img}
@@ -150,10 +142,7 @@ const DealCard = ({
             <div id="actions">shared</div>
             <div id="share">
               <Button
-                className={cn(`cursor-pointer rounded-2xl text-white`, {
-                  "bg-gray-500 hover:bg-gray-600": expired,
-                  "bg-blue-600 hover:bg-blue-700": !expired,
-                })}
+                className="cursor-pointer rounded-2xl text-white bg-blue-600 hover:bg-blue-700"
                 size="sm"
               >
                 Voir le deal
