@@ -37,10 +37,12 @@ export const DEALS_MOCK: tDealCard[] = [
   {
     title: "Super Deal 1",
     price: 49.99,
+    votes: 20,
     description:
       "Get the best deal on this amazing product! Limited time offer.",
-    image: "https://picsum.photos/200/300?random=1",
+    thumbnail: "https://picsum.photos/200/300?random=1",
     storeName: "Marjane",
+    postedTime: ONE_MONTH_AGO,
     sharedBy: {
       username: "ettakhi",
       img: IMG_HAKIM,
@@ -51,11 +53,13 @@ export const DEALS_MOCK: tDealCard[] = [
     title:
       "Amazing Offer 2 lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua dsfafds fdsf fdsf fdsfad fdsfd fdsfdsljhlj",
     description: DEAL_DESCRIPTION,
+    votes: 344,
     price: 23,
     oldPrice: 29,
     deliveryFee: 23,
+    postedTime: ONE_WEEK_AGO,
     storeName: "Carrefour",
-    image: "https://picsum.photos/200/300?random=2",
+    thumbnail: "https://picsum.photos/200/300?random=2",
     sharedBy: {
       username: "hakim",
       img: IMG_HAKIM,
@@ -64,11 +68,13 @@ export const DEALS_MOCK: tDealCard[] = [
   },
   {
     title: "Exclusive Deal 3",
+    votes: -100,
     description:
       "Get the best deal on this amazing product! Limited time offer.",
     price: 19,
     storeName: "Aswak Assalam",
-    image: "https://picsum.photos/200/300?random=3",
+    postedTime: ONE_MONTH_AGO,
+    thumbnail: "https://picsum.photos/200/300?random=3",
     sharedBy: {
       username: "mariame",
       img: IMG_HAKIM,
@@ -80,9 +86,12 @@ export const DEALS_MOCK: tDealCard[] = [
     description:
       "Get the best deal on this amazing product! Limited time offer.",
     price: 39.99,
+    votes: 88,
     oldPrice: 45,
+    deliveryFee: 5,
+    postedTime: ONE_DAY_AGO,
     storeName: "Electroplanet",
-    image: "https://picsum.photos/200/300?random=4",
+    thumbnail: "https://picsum.photos/200/300?random=4",
     sharedBy: {
       username: "ettakhi",
       img: IMG_HAKIM,
@@ -92,9 +101,11 @@ export const DEALS_MOCK: tDealCard[] = [
   {
     title: "Best Price 5",
     description: DEAL_DESCRIPTION,
+    votes: 150,
     price: 30,
     storeName: "Bim",
-    image: "https://picsum.photos/200/300?random=5",
+    postedTime: ONE_MONTH_AGO,
+    thumbnail: "https://picsum.photos/200/300?random=5",
     sharedBy: {
       username: "jack",
       img: IMG_HAKIM,

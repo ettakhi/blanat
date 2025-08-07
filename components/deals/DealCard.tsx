@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { HiOutlineTruck, HiExternalLink } from "react-icons/hi";
 import AvatarImg from "../AvatarImg";
-import { IMG_HAKIM, ONE_MONTH_AGO } from "@/lib/constants";
 import Temperature from "./Temperature";
 import PostedTime from "./PostedTime";
 import { getInitials } from "@/lib/user";
@@ -11,9 +10,11 @@ export type tDealCard = {
   title: string;
   price: number;
   oldPrice?: number;
-  image: string;
+  thumbnail: string;
   description: string;
+  votes: number;
   storeName: string;
+  postedTime: Date;
   deliveryFee?: number;
   sharedBy: {
     username: string;
@@ -25,33 +26,37 @@ export type tDealCard = {
 const DealCard = ({
   title,
   price,
-  image,
+  thumbnail,
   description,
   oldPrice,
+  votes,
   deliveryFee,
   sharedBy,
   storeName,
+  postedTime,
 }: tDealCard) => {
   return (
-    <div className="bg-white grid grid-cols-3 md:grid-cols-4 h-60 md:h-64 border border-gray-200 rounded-lg overflow-hidden m-2">
+    <div className="bg-white grid grid-cols-3 md:grid-cols-4  border border-gray-200 rounded-lg overflow-hidden m-2 cursor-pointer group hover:shadow-md hover:inset-shadow-sm">
       {/* side thumbnail */}
-      <div className="relative col-span-1 h-full">
-        <Image
-          src={image}
-          alt="Deal"
-          fill
-          className="object-contain"
-          sizes="(max-width: 640px) 20vw, 10rem" /* optional hint */
-        />
+      <div className="relative col-span-1 items-center flex h-full md:p-2">
+        <div className="h-50 w-50 flex items-center justify-center">
+          <Image
+            src={thumbnail}
+            alt="Deal"
+            width={176}
+            height={176}
+            className="object-cover h-44 w-44 rounded-lg aspect-square border-gray-200 border-2 group-hover:scale-105 transition-transform duration-200 ease-in-out"
+          />
+        </div>
       </div>
 
       {/* details */}
-      <div className="flex flex-col items-center col-span-2 md:col-span-3 p-2">
+      <div className="flex flex-col items-center col-span-2 md:col-span-3 p-2 h-full">
         <div className="w-full flex justify-between items-center">
-          <Temperature votes={344} />
-          <PostedTime postedTime={ONE_MONTH_AGO} />
+          <Temperature votes={votes} />
+          <PostedTime postedTime={postedTime} />
         </div>
-        <div className="w-full">
+        <div className="w-full h-full flex flex-col">
           <div className="font-semibold text-gray-900 line-clamp-2 mt-2">
             {title}
           </div>
@@ -84,14 +89,14 @@ const DealCard = ({
               </span>
             </div>
           </div>
-          <div className="line-clamp-1 md:line-clamp-2 text-sm text-gray-500 mt-2">
+          <div className="line-clamp-1 md:line-clamp-2 text-sm text-gray-500 my-2">
             {description}
           </div>
-          <div className="flex items-center justify-between mt-3">
+          <div className="flex items-center justify-between mt-auto">
             <div id="actions">shared</div>
             <div id="share">
               <Button
-                className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white"
+                className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white rounded-2xl"
                 size="sm"
               >
                 Voir le deal <HiExternalLink className="inline-block ml-1" />
