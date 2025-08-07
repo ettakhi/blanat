@@ -42,7 +42,7 @@ export const DEALS_MOCK: tDealCard[] = [
       "Get the best deal on this amazing product! Limited time offer.",
     thumbnail: "https://picsum.photos/200/300?random=1",
     storeName: "Marjane",
-    postedTime: ONE_MONTH_AGO,
+    postedDate: ONE_MONTH_AGO,
     sharedBy: {
       username: "ettakhi",
       img: IMG_HAKIM,
@@ -57,7 +57,7 @@ export const DEALS_MOCK: tDealCard[] = [
     price: 23,
     oldPrice: 29,
     deliveryFee: 23,
-    postedTime: ONE_WEEK_AGO,
+    postedDate: ONE_WEEK_AGO,
     storeName: "Carrefour",
     thumbnail: "https://picsum.photos/200/300?random=2",
     sharedBy: {
@@ -73,7 +73,8 @@ export const DEALS_MOCK: tDealCard[] = [
       "Get the best deal on this amazing product! Limited time offer.",
     price: 19,
     storeName: "Aswak Assalam",
-    postedTime: ONE_MONTH_AGO,
+    postedDate: ONE_MONTH_AGO,
+    expiryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Expires in 7 days
     thumbnail: "https://picsum.photos/200/300?random=3",
     sharedBy: {
       username: "mariame",
@@ -89,7 +90,8 @@ export const DEALS_MOCK: tDealCard[] = [
     votes: 88,
     oldPrice: 45,
     deliveryFee: 5,
-    postedTime: ONE_DAY_AGO,
+    postedDate: ONE_DAY_AGO,
+    expiryDate: ONE_WEEK_AGO, // Expires one week ago
     storeName: "Electroplanet",
     thumbnail: "https://picsum.photos/200/300?random=4",
     sharedBy: {
@@ -104,7 +106,7 @@ export const DEALS_MOCK: tDealCard[] = [
     votes: 150,
     price: 30,
     storeName: "Bim",
-    postedTime: ONE_MONTH_AGO,
+    postedDate: ONE_MONTH_AGO,
     thumbnail: "https://picsum.photos/200/300?random=5",
     sharedBy: {
       username: "jack",

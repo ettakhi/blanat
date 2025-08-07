@@ -163,3 +163,125 @@ export function smartDate(
   // Use absolute date for older dates
   return formatDate(date, { locale, dateStyle: "medium" });
 }
+
+/**
+ * Checks if a given date has expired (is in the past)
+ * @param date - The date to check for expiration
+ * @param referenceDate - Optional reference date to compare against (defaults to current time)
+ * @returns True if the date has expired, false otherwise
+ */
+export function isExpired(
+  date: Date | string | number,
+  referenceDate?: Date | string | number
+): boolean {
+  const targetDate = new Date(date);
+  const refDate = referenceDate ? new Date(referenceDate) : new Date();
+
+  // Return false for invalid dates
+  if (isNaN(targetDate.getTime()) || isNaN(refDate.getTime())) {
+    return false;
+  }
+
+  return targetDate < refDate;
+}
+
+/**
+ * Formats a date to show expiration status with human-readable context
+ * @param date - The expiration date to format
+ * @param options - Configuration options
+ * @returns A formatted string indicating expiration status
+ */
+export function expiredFormatDate(
+  date: Date | string | number,
+  options: {
+    locale?: string;
+    expiredText?: string;
+    expiresText?: string;
+    showTimeOnExpired?: boolean;
+    useRelativeTime?: boolean;
+  } = {}
+): string {
+  const {
+    locale = "en",
+    expiredText = "Expired",
+    expiresText = "Expires",
+    showTimeOnExpired = true,
+    useRelativeTime = true,
+  } = options;
+
+  const now = new Date();
+  const expirationDate = new Date(date);
+
+  if (isNaN(expirationDate.getTime())) {
+    return "Invalid expiration date";
+  }
+
+  const expired = isExpired(expirationDate, now);
+
+  if (expired) {
+    if (useRelativeTime) {
+      const relativeTime = timeAgo(expirationDate, { locale });
+      return `${expiredText} ${relativeTime}`;
+    } else if (showTimeOnExpired) {
+      const formattedDate = formatDate(expirationDate, {
+        locale,
+        includeTime: true,
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
+      return `${expiredText} on ${formattedDate}`;
+    } else {
+      const formattedDate = formatDate(expirationDate, {
+        locale,
+        dateStyle: "medium",
+      });
+      return `${expiredText} on ${formattedDate}`;
+    }
+  } else {
+    if (useRelativeTime) {
+      // For future dates, we need to reverse the time calculation
+      const relativeTime = timeAgo(expirationDate, { locale });
+      // Since timeAgo calculates from now to past, we need to handle future dates
+      const diffInSeconds = Math.floor(
+        (expirationDate.getTime() - now.getTime()) / 1000
+      );
+
+      if (diffInSeconds < 60) {
+        return `${expiresText} in less than a minute`;
+      }
+
+      // Use Intl.RelativeTimeFormat for future dates
+      const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+
+      const units = [
+        { name: "year", seconds: 31536000 },
+        { name: "month", seconds: 2592000 },
+        { name: "week", seconds: 604800 },
+        { name: "day", seconds: 86400 },
+        { name: "hour", seconds: 3600 },
+        { name: "minute", seconds: 60 },
+      ];
+
+      for (const unit of units) {
+        const value = Math.floor(diffInSeconds / unit.seconds);
+        if (value >= 1) {
+          const relativeText = rtf.format(
+            value,
+            unit.name as Intl.RelativeTimeFormatUnit
+          );
+          return `${expiresText} ${relativeText}`;
+        }
+      }
+
+      return `${expiresText} soon`;
+    } else {
+      const formattedDate = formatDate(expirationDate, {
+        locale,
+        includeTime: true,
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
+      return `${expiresText} on ${formattedDate}`;
+    }
+  }
+}

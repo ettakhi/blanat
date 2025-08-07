@@ -14,7 +14,7 @@ interface DealCardProps {
   description: string;
   temperature: number;
   comments: number;
-  postedTime: string;
+  postedDate: string;
   isFree?: boolean;
   couponCode?: string;
   href: string;
@@ -31,7 +31,7 @@ const DealCard: React.FC<DealCardProps> = ({
   description,
   temperature,
   comments,
-  postedTime,
+  postedDate,
   isFree = false,
   couponCode,
   href,
@@ -68,7 +68,7 @@ const DealCard: React.FC<DealCardProps> = ({
             </div>
             <CiDroplet className="w-4 h-4 text-orange-500" />
           </div>
-          <span className="text-xs text-gray-400">{postedTime}</span>
+          <span className="text-xs text-gray-400">{postedDate}</span>
         </div>
 
         {/* Content */}
@@ -161,7 +161,7 @@ const DealCard: React.FC<DealCardProps> = ({
                 </div>
                 <CiDroplet className="w-4 h-4 text-orange-500" />
               </div>
-              <span className="text-xs text-gray-400">{postedTime}</span>
+              <span className="text-xs text-gray-400">{postedDate}</span>
             </div>
 
             {/* Title */}

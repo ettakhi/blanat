@@ -14,7 +14,8 @@ export type tDealCard = {
   description: string;
   votes: number;
   storeName: string;
-  postedTime: Date;
+  postedDate: Date;
+  expiryDate?: Date;
   deliveryFee?: number;
   sharedBy: {
     username: string;
@@ -31,22 +32,23 @@ const DealCard = ({
   oldPrice,
   votes,
   deliveryFee,
+  expiryDate,
   sharedBy,
   storeName,
-  postedTime,
+  postedDate,
 }: tDealCard) => {
   return (
     <div className="bg-white grid grid-cols-3 md:grid-cols-4  border border-gray-200 rounded-lg overflow-hidden m-2 cursor-pointer group hover:shadow-md hover:inset-shadow-sm">
       {/* side thumbnail */}
-      {/* <Temperature votes={votes} className="flex md:hidden" /> */}
-      <div className="relative col-span-1 items-center justify-center flex flex-col h-full p-2">
-        <div className="flex items-center justify-center">
+      <div className="relative col-span-1 items-center justify-between flex flex-col h-full p-2">
+        <Temperature votes={votes} className="flex md:hidden w-full" />
+        <div className="flex items-center justify-center py-2">
           <Image
             src={thumbnail}
             alt="Deal"
             width={176}
             height={176}
-            className="object-cover h-44 w-44 rounded-lg aspect-square border-gray-200 border-2 group-hover:scale-105 transition-transform duration-200 ease-in-out"
+            className="object-cover h-36 sm:h-44 w-36 sm:w-44 rounded-lg aspect-square border-gray-200 border-2 group-hover:scale-105 transition-transform duration-200 ease-in-out"
           />
         </div>
       </div>
@@ -55,7 +57,7 @@ const DealCard = ({
       <div className="flex flex-col items-center col-span-2 md:col-span-3 p-2 h-full">
         <div className="w-full flex justify-between items-center">
           <Temperature votes={votes} className="hidden md:flex" />
-          <PostedTime postedTime={postedTime} />
+          <PostedTime postedDate={postedDate} />
         </div>
         <div className="w-full h-full flex flex-col">
           <div className="font-semibold text-gray-900 line-clamp-2 mt-2">

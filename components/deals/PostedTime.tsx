@@ -1,7 +1,7 @@
 import { timeAgo } from "@/lib/utils/date";
 
-const PostedTime = ({ postedTime }: { postedTime: Date }) => {
-  const formatedDate = timeAgo(postedTime, {
+const PostedTime = ({ postedDate }: { postedDate: Date }) => {
+  const formatedDate = timeAgo(postedDate, {
     locale: "en",
     // relativeDays: 0, // Show relative time for dates within the last 7 days
   });
