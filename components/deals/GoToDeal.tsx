@@ -2,9 +2,9 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { HiExternalLink } from "react-icons/hi";
 
-type GoToDealProps = { codePromo?: string };
+type GoToDealProps = { codePromo?: string; dealLink?: string };
 
-const GoToDeal = ({ codePromo }: GoToDealProps) => {
+const GoToDeal = ({ codePromo, dealLink }: GoToDealProps) => {
   if (!codePromo) {
     return (
       <Button

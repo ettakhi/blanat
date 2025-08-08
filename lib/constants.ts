@@ -43,6 +43,7 @@ export const DEALS_MOCK: tDealCard[] = [
     deliveryFee: 4,
     currency: "MAD",
     codePromo: "SUPERDEAL",
+    dealLink: "https://consumer.huawei.com/fr/wearables/watch-gt4/buy/",
     description:
       "Get the best deal on this amazing product! Limited time offer.",
     thumbnail: "https://picsum.photos/200/300?random=1",
@@ -81,6 +82,7 @@ export const DEALS_MOCK: tDealCard[] = [
     slug: "exclusive-deal3",
     title: "Exclusive Deal 3",
     votes: -100,
+    dealLink: "https://www.amazon.es/dp/B0CYTKSFMN",
     description:
       "Get the best deal on this amazing product! Limited time offer.",
     commentsCount: 25,
@@ -106,6 +108,7 @@ export const DEALS_MOCK: tDealCard[] = [
     votes: 88,
     commentsCount: 0,
     currency: "MAD",
+    dealLink: "https://google.com",
     oldPrice: 45,
     deliveryFee: 5,
     postedDate: ONE_DAY_AGO,

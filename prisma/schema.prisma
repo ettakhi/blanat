@@ -31,7 +31,7 @@ model Deal {
   slug           String    @unique
   title          String
   text           String
-  url            String?
+  dealLink       String?
   isLocale       Boolean   @default(false)
   image          String
   price          Int       @default(0)
