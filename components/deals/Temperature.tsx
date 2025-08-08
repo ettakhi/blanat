@@ -1,5 +1,5 @@
 import { HiArrowDown, HiArrowUp } from "react-icons/hi";
-import { cn } from "@/lib/utils";
+import { cn, getVoteColor } from "@/lib/utils";
 
 const Temperature = ({
   votes,
@@ -16,7 +16,7 @@ const Temperature = ({
       )}
     >
       <HiArrowUp className="text-blue-500 h-6 w-6 hover:bg-blue-200 p-1 rounded-full cursor-pointer border hover:scale-125" />
-      <small className="text-orange-500">{votes}°</small>
+      <small className={cn("font-bold", getVoteColor(votes))}>{votes}°</small>
       <HiArrowDown className="text-red-500 h-6 w-6 hover:bg-red-200 p-1 rounded-full cursor-pointer border hover:scale-125" />
     </div>
   );
