@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 import {
   HiOutlineChat,
@@ -7,13 +8,17 @@ import {
 
 type CardActionsProps = {
   commentsCount: number;
+  className?: string;
 };
 
-const CardActions = ({ commentsCount }: CardActionsProps) => {
+const CardActions = ({ commentsCount, className }: CardActionsProps) => {
   return (
     <div
       id="actions"
-      className="flex items-center justify-between gap-1.5 md:gap-3 text-gray-500"
+      className={cn(
+        "flex items-center justify-between gap-1.5 md:gap-3 text-gray-500",
+        className
+      )}
     >
       <div className="flex items-center hover:text-blue-400 hover:scale-105">
         <HiOutlineChat className="h-5 w-5 md:h-6 md:w-6" />

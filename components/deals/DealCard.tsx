@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import CardActions from "./CardActions";
 import Price from "./Price";
 import { tCurrency } from "@/lib/type";
+import GoToDeal from "./GoToDeal";
 
 export type tDealCard = {
   title: string;
@@ -20,6 +21,7 @@ export type tDealCard = {
   description: string;
   votes: number;
   storeName: string;
+  codePromo?: string;
   postedDate: Date;
   expiryDate?: Date;
   deliveryFee?: number;
@@ -36,6 +38,7 @@ const DealCard = ({
   price,
   currency,
   thumbnail,
+  codePromo,
   description,
   oldPrice,
   votes,
@@ -64,16 +67,20 @@ const DealCard = ({
           <Image
             src={thumbnail}
             alt="Deal"
-            width={176}
-            height={176}
+            width={128}
+            height={128}
             className={cn(
-              `object-cover h-36 sm:h-44 w-36 sm:w-44 rounded-lg aspect-square border-gray-200 border-2 group-hover:scale-105 transition-transform duration-200 ease-in-out`,
+              `object-cover h-32 sm:h-44 w-32 sm:w-44 rounded-lg aspect-square border-gray-200 border-2 group-hover:scale-105 transition-transform duration-200 ease-in-out`,
               {
                 grayscale: expired,
               }
             )}
           />
         </div>
+        <CardActions
+          commentsCount={commentsCount}
+          className="flex md:hidden w-full sm:px-2 md:px-0"
+        />
       </div>
 
       {/* details */}
@@ -140,16 +147,11 @@ const DealCard = ({
             {description}
           </div>
           <div className="flex items-center justify-between mt-auto">
-            <CardActions commentsCount={commentsCount} />
-            <div id="share">
-              <Button
-                className="cursor-pointer rounded-2xl text-white bg-blue-600 hover:bg-blue-700"
-                size="sm"
-              >
-                Voir le deal
-                <HiExternalLink className="inline-block ml-1" />
-              </Button>
-            </div>
+            <CardActions
+              commentsCount={commentsCount}
+              className="hidden md:flex"
+            />
+            <GoToDeal codePromo={codePromo} />
           </div>
         </div>
       </div>

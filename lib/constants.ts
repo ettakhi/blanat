@@ -39,6 +39,7 @@ export const DEALS_MOCK: tDealCard[] = [
     price: 49.99,
     votes: 20,
     currency: "MAD",
+    codePromo: "SUPERDEAL",
     description:
       "Get the best deal on this amazing product! Limited time offer.",
     thumbnail: "https://picsum.photos/200/300?random=1",
