@@ -96,6 +96,7 @@ const DealCard = ({
           </div>
           <Price
             price={price}
+            oldPrice={oldPrice}
             expired={expired}
             deliveryFee={deliveryFee}
             currency={currency}
