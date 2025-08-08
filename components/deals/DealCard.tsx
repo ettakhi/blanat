@@ -8,6 +8,7 @@ import { getInitials } from "@/lib/user";
 import { isExpired } from "@/lib/utils/date";
 import { cn } from "@/lib/utils";
 import CardActions from "./CardActions";
+import Price from "./Price";
 
 export type tDealCard = {
   title: string;
@@ -90,22 +91,7 @@ const DealCard = ({
           >
             {title}
           </div>
-          <div className="flex gap-2">
-            {price && (
-              <span
-                className={cn(`font-bold text-2xl`, {
-                  "text-gray-500": expired,
-                  "text-red-600": !expired,
-                })}
-              >
-                {price}€
-              </span>
-            )}
-            <span className="text-gray-400 text-sm flex items-center gap-1">
-              <HiOutlineTruck className="h-5 w-5" />{" "}
-              {deliveryFee ? `${deliveryFee}€` : "Gratuit"}
-            </span>
-          </div>
+          <Price price={price} expired={expired} deliveryFee={deliveryFee} />
           <div className="flex gap-2 items-center justify-between">
             <div className="text-sm text-gray-600 mt-1 gap-1 flex items-center">
               <span className="hidden md:inline-block italic">Available</span>
