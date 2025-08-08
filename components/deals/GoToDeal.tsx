@@ -8,9 +8,19 @@ import { HiExternalLink } from "react-icons/hi";
 type GoToDealProps = { codePromo?: string; dealLink?: string };
 
 export default function GoToDeal({ codePromo, dealLink }: GoToDealProps) {
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = async (e: React.MouseEvent) => {
     e.preventDefault(); // cancel the parent <Link> default nav
     e.stopPropagation(); // stop bubbling to the card
+
+    // Copy promo code to clipboard if it exists
+    if (codePromo) {
+      try {
+        await navigator.clipboard.writeText(codePromo);
+      } catch (err) {
+        console.error("Failed to copy promo code:", err);
+      }
+    }
+
     if (!dealLink) return;
 
     window.open(dealLink, "_blank", "noopener,noreferrer");
