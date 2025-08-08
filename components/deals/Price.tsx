@@ -55,10 +55,12 @@ const Price = ({
           </Badge>
         )}
       </div>
-      <span className="text-gray-400 text-sm flex items-center gap-1">
-        <HiOutlineTruck className="h-5 w-5" />
-        {deliveryFee ? `${deliveryFee}${currencySymbol}` : "Gratuit"}
-      </span>
+      {deliveryFee !== undefined && (
+        <span className="text-gray-400 text-sm flex items-center gap-1">
+          <HiOutlineTruck className="h-5 w-5" />
+          {deliveryFee === 0 ? "Gratuit" : `${deliveryFee}${currencySymbol}`}
+        </span>
+      )}
     </div>
   );
 };

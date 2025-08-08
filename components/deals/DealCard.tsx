@@ -70,7 +70,7 @@ const DealCard = ({
             width={128}
             height={128}
             className={cn(
-              `object-cover h-32 sm:h-44 w-32 sm:w-44 rounded-lg aspect-square border-gray-200 border-2 group-hover:scale-105 transition-transform duration-200 ease-in-out`,
+              `object-cover h-32 md:h-44 w-32 md:w-44 rounded-lg aspect-square border-gray-200 border-2 group-hover:scale-105 transition-transform duration-200 ease-in-out`,
               {
                 grayscale: expired,
               }

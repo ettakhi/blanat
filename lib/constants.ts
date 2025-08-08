@@ -38,6 +38,7 @@ export const DEALS_MOCK: tDealCard[] = [
     title: "Super Deal 1",
     price: 49.99,
     votes: 20,
+    deliveryFee: 4,
     currency: "MAD",
     codePromo: "SUPERDEAL",
     description:
@@ -114,7 +115,9 @@ export const DEALS_MOCK: tDealCard[] = [
     description: DEAL_DESCRIPTION,
     votes: 150,
     currency: "MAD",
-    price: 30,
+    price: 0,
+    deliveryFee: 0,
+    oldPrice: 40,
     storeName: "Bim",
     commentsCount: 2,
     postedDate: ONE_MONTH_AGO,
