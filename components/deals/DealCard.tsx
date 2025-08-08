@@ -9,11 +9,13 @@ import { isExpired } from "@/lib/utils/date";
 import { cn } from "@/lib/utils";
 import CardActions from "./CardActions";
 import Price from "./Price";
+import { tCurrency } from "@/lib/type";
 
 export type tDealCard = {
   title: string;
   price: number;
   oldPrice?: number;
+  currency: tCurrency;
   thumbnail: string;
   description: string;
   votes: number;
@@ -32,6 +34,7 @@ export type tDealCard = {
 const DealCard = ({
   title,
   price,
+  currency,
   thumbnail,
   description,
   oldPrice,
@@ -91,7 +94,12 @@ const DealCard = ({
           >
             {title}
           </div>
-          <Price price={price} expired={expired} deliveryFee={deliveryFee} />
+          <Price
+            price={price}
+            expired={expired}
+            deliveryFee={deliveryFee}
+            currency={currency}
+          />
           <div className="flex gap-2 items-center justify-between">
             <div className="text-sm text-gray-600 mt-1 gap-1 flex items-center">
               <span className="hidden md:inline-block italic">Available</span>

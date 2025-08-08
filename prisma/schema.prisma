@@ -31,9 +31,11 @@ model Deal {
   title          String
   text           String
   url            String?
-  slug           String?
-  image          String?
-  price          Int?
+  isLocale       Boolean   @default(false)
+  slug           String
+  image          String
+  price          Int       @default(0)
+  currency       Currency? @default(MAD)
   oldPrice       Int?
   votes          Int       @default(0)
   commentsCount  Int       @default(0)
@@ -149,4 +151,11 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, credentialID])
+}
+
+enum Currency {
+  EUR
+  USD
+  GBP
+  MAD
 }

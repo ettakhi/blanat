@@ -14,3 +14,15 @@ export const getVoteColor = (votes: number): string => {
   if (votes <= 100) return "text-orange-500"; // Hot
   return "text-red-600"; // Very hot
 };
+
+import { tCurrency } from "@/lib/type";
+
+export const getCurrencySymbol = (currency: tCurrency): string => {
+  const currencySymbols: Record<tCurrency, string> = {
+    EUR: "€",
+    USD: "$",
+    MAD: "DH",
+  };
+
+  return currencySymbols[currency] || "DH"; // Default to Dirham if currency not found
+};
