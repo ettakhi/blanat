@@ -35,6 +35,8 @@ export const DEAL_TITLE_SHORT = `Multimètre & Caméra Thermique 2 en 1 Mustool 
 
 export const DEALS_MOCK: tDealCard[] = [
   {
+    id: "deal1",
+    slug: "super-deal1",
     title: "Super Deal 1",
     price: 49.99,
     votes: 20,
@@ -54,6 +56,8 @@ export const DEALS_MOCK: tDealCard[] = [
     },
   },
   {
+    id: "deal2",
+    slug: "amazing-offer-deal2",
     title:
       "Amazing Offer 2 lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua dsfafds fdsf fdsf fdsfad fdsfd fdsfdsljhlj",
     description: DEAL_DESCRIPTION,
@@ -73,6 +77,8 @@ export const DEALS_MOCK: tDealCard[] = [
     },
   },
   {
+    id: "deal3",
+    slug: "exclusive-deal3",
     title: "Exclusive Deal 3",
     votes: -100,
     description:
@@ -91,6 +97,8 @@ export const DEALS_MOCK: tDealCard[] = [
     },
   },
   {
+    id: "deal4",
+    slug: "limited-time-deal4",
     title: "Limited Time Offer 4",
     description:
       "Get the best deal on this amazing product! Limited time offer.",
@@ -111,6 +119,8 @@ export const DEALS_MOCK: tDealCard[] = [
     },
   },
   {
+    id: "deal5",
+    slug: "best-price-deal5",
     title: "Best Price 5",
     description: DEAL_DESCRIPTION,
     votes: 150,

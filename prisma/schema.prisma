@@ -28,11 +28,11 @@ model Comment {
 
 model Deal {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  slug           String    @unique
   title          String
   text           String
   url            String?
   isLocale       Boolean   @default(false)
-  slug           String
   image          String
   price          Int       @default(0)
   currency       Currency? @default(MAD)

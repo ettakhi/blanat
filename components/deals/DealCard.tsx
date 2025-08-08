@@ -14,6 +14,8 @@ import GoToDeal from "./GoToDeal";
 
 export type tDealCard = {
   title: string;
+  slug: string;
+  id: string;
   price: number;
   oldPrice?: number;
   currency: tCurrency;
@@ -35,6 +37,7 @@ export type tDealCard = {
 
 const DealCard = ({
   title,
+  id,
   price,
   currency,
   thumbnail,
@@ -48,6 +51,7 @@ const DealCard = ({
   storeName,
   postedDate,
   commentsCount,
+  slug,
 }: tDealCard) => {
   const expired = isExpired(expiryDate);
 
