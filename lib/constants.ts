@@ -1,5 +1,3 @@
-import { tDealCard } from "@/components/deals/DealCard";
-
 export const IMG_HAKIM =
   "https://lh3.googleusercontent.com/a/ACg8ocIVFImGuxIc88qY0fm6BTibar2BAoMBIS_ze0cbteqGbAefAFjGdw=s96-c";
 
@@ -33,112 +31,112 @@ export const DEAL_TITLE_LONG = `Multimètre & Caméra Thermique 2 en 1 Mustool M
 
 export const DEAL_TITLE_SHORT = `Multimètre & Caméra Thermique 2 en 1 Mustool MT13S`;
 
-export const DEALS_MOCK: tDealCard[] = [
-  {
-    id: "deal1",
-    slug: "super-deal1",
-    title: "Super Deal 1",
-    price: 49.99,
-    votes: 20,
-    deliveryFee: 4,
-    currency: "MAD",
-    codePromo: "SUPERDEAL",
-    dealLink: "https://consumer.huawei.com/fr/wearables/watch-gt4/buy/",
-    description:
-      "Get the best deal on this amazing product! Limited time offer.",
-    thumbnail: "https://picsum.photos/200/300?random=1",
-    storeName: "Marjane",
-    commentsCount: 5,
-    postedDate: ONE_MONTH_AGO,
-    sharedBy: {
-      username: "ettakhidfasdfdsafdfasdfdsafdsfafddff",
-      img: IMG_HAKIM,
-      id: "user-1",
-    },
-  },
-  {
-    id: "deal2",
-    slug: "amazing-offer-deal2",
-    title:
-      "Amazing Offer 2 lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua dsfafds fdsf fdsf fdsfad fdsfd fdsfdsljhlj",
-    description: DEAL_DESCRIPTION,
-    votes: 344,
-    price: 23,
-    currency: "EUR",
-    oldPrice: 29,
-    commentsCount: 49,
-    deliveryFee: 23,
-    postedDate: ONE_WEEK_AGO,
-    storeName: "Carrefour",
-    thumbnail: "https://picsum.photos/200/300?random=2",
-    sharedBy: {
-      username: "hakim",
-      img: IMG_HAKIM,
-      id: "user-2",
-    },
-  },
-  {
-    id: "deal3",
-    slug: "exclusive-deal3",
-    title: "Exclusive Deal 3",
-    votes: -100,
-    dealLink: "https://www.amazon.es/dp/B0CYTKSFMN",
-    description:
-      "Get the best deal on this amazing product! Limited time offer.",
-    commentsCount: 25,
-    price: 19,
-    currency: "MAD",
-    storeName: "Aswak Assalam",
-    postedDate: ONE_MONTH_AGO,
-    expiryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Expires in 7 days
-    thumbnail: "https://picsum.photos/200/300?random=3",
-    sharedBy: {
-      username: "mariame",
-      img: IMG_HAKIM,
-      id: "user-3",
-    },
-  },
-  {
-    id: "deal4",
-    slug: "limited-time-deal4",
-    title: "Limited Time Offer 4",
-    description:
-      "Get the best deal on this amazing product! Limited time offer.",
-    price: 39.99,
-    votes: 88,
-    commentsCount: 0,
-    currency: "MAD",
-    dealLink: "https://google.com",
-    oldPrice: 45,
-    deliveryFee: 5,
-    postedDate: ONE_DAY_AGO,
-    expiryDate: ONE_WEEK_AGO, // Expires one week ago
-    storeName: "Electroplanet",
-    thumbnail: "https://picsum.photos/200/300?random=4",
-    sharedBy: {
-      username: "ettakhi",
-      img: IMG_HAKIM,
-      id: "user-4",
-    },
-  },
-  {
-    id: "deal5",
-    slug: "best-price-deal5",
-    title: "Best Price 5",
-    description: DEAL_DESCRIPTION,
-    votes: 150,
-    currency: "MAD",
-    price: 0,
-    deliveryFee: 0,
-    oldPrice: 40,
-    storeName: "Bim",
-    commentsCount: 2,
-    postedDate: ONE_MONTH_AGO,
-    thumbnail: "https://picsum.photos/200/300?random=5",
-    sharedBy: {
-      username: "jack",
-      img: IMG_HAKIM,
-      id: "user-5",
-    },
-  },
-];
+// export const DEALS_MOCK: any[] = [
+//   {
+//     id: "68928f26d982e664e66b3e80",
+//     slug: "super-68928f26d982e664e66b3e80",
+//     title: "Super Deal 1",
+//     price: 49.99,
+//     votes: 20,
+//     deliveryFee: 4,
+//     currency: "MAD",
+//     codePromo: "SUPERDEAL",
+//     dealLink: "https://consumer.huawei.com/fr/wearables/watch-gt4/buy/",
+//     description:
+//       "Get the best deal on this amazing product! Limited time offer.",
+//     image: "https://picsum.photos/200/300?random=1",
+//     sharedById: "6893d6ea48511ccced27f0ec",
+//     storeName: "Marjane",
+//     commentsCount: 5,
+//     postedDate: ONE_MONTH_AGO,
+//   },
+//   {
+//     id: "68928f26d982e664e66b3e81",
+//     slug: "amazing-offer-68928f26d982e664e66b3e81",
+//     title:
+//       "Amazing Offer 2 lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua dsfafds fdsf fdsf fdsfad fdsfd fdsfdsljhlj",
+//     description: DEAL_DESCRIPTION,
+//     votes: 344,
+//     price: 23,
+//     currency: "EUR",
+//     oldPrice: 29,
+//     commentsCount: 49,
+//     deliveryFee: 23,
+//     postedDate: ONE_WEEK_AGO,
+//     storeName: "Carrefour",
+//     image: "https://picsum.photos/200/300?random=2",
+//     sharedById: "68928f26d982e664e66b3e8f",
+//     // sharedBy: {
+//     //   username: "hakim",
+//     //   img: IMG_HAKIM,
+//     //   id: "user-2",
+//     // },
+//   },
+//   {
+//     id: "68928f26d982e664e66b3e82",
+//     slug: "exclusive-68928f26d982e664e66b3e82",
+//     title: "Exclusive Deal 3",
+//     votes: -100,
+//     dealLink: "https://www.amazon.es/dp/B0CYTKSFMN",
+//     description:
+//       "Get the best deal on this amazing product! Limited time offer.",
+//     commentsCount: 25,
+//     price: 19,
+//     currency: "MAD",
+//     storeName: "Aswak Assalam",
+//     postedDate: ONE_MONTH_AGO,
+//     expireAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Expires in 7 days
+//     image: "https://picsum.photos/200/300?random=3",
+//     sharedById: "68928f26d982e664e66b3e8f",
+//     // sharedBy: {
+//     //   username: "mariame",
+//     //   img: IMG_HAKIM,
+//     //   id: "user-3",
+//     // },
+//   },
+//   {
+//     id: "68928f26d982e664e66b3e83",
+//     slug: "limited-time-68928f26d982e664e66b3e83",
+//     title: "Limited Time Offer 4",
+//     description:
+//       "Get the best deal on this amazing product! Limited time offer.",
+//     price: 39.99,
+//     votes: 88,
+//     commentsCount: 0,
+//     currency: "MAD",
+//     dealLink: "https://google.com",
+//     oldPrice: 45,
+//     deliveryFee: 5,
+//     postedDate: ONE_DAY_AGO,
+//     expireAt: ONE_WEEK_AGO, // Expires one week ago
+//     sharedById: "68928f26d982e664e66b3e8f",
+//     storeName: "Electroplanet",
+//     image: "https://picsum.photos/200/300?random=4",
+//     // sharedBy: {
+//     //   username: "ettakhi",
+//     //   img: IMG_HAKIM,
+//     //   id: "user-4",
+//     // },
+//   },
+//   {
+//     id: "68928f26d982e664e66b3e84",
+//     slug: "best-price-68928f26d982e664e66b3e84",
+//     title: "Best Price 5",
+//     description: DEAL_DESCRIPTION,
+//     votes: 150,
+//     currency: "MAD",
+//     price: 0,
+//     deliveryFee: 0,
+//     oldPrice: 40,
+//     storeName: "Bim",
+//     sharedById: "6893d6ea48511ccced27f0ec",
+//     commentsCount: 2,
+//     postedDate: ONE_MONTH_AGO,
+//     image: "https://picsum.photos/200/300?random=5",
+//     // sharedBy: {
+//     //   username: "jack",
+//     //   img: IMG_HAKIM,
+//     //   id: "user-5",
+//     // },
+//   },
+// ];

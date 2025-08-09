@@ -30,28 +30,29 @@ model Deal {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   slug           String    @unique
   title          String
-  text           String
+  description    String
   dealLink       String?
   isLocale       Boolean   @default(false)
   image          String
-  price          Int       @default(0)
-  currency       Currency? @default(MAD)
-  oldPrice       Int?
+  storeName      String
+  price          Float     @default(0)
+  currency       Currency  @default(MAD)
+  oldPrice       Float?
   votes          Int       @default(0)
   commentsCount  Int       @default(0)
   comments       Comment[]
-  createdAt      DateTime  @default(now()) @db.Date
-  updatedAt      DateTime  @default(now()) @db.Date
-  startAt        DateTime  @default(now()) @db.Date
+  postedDate     DateTime  @default(now()) @db.Date
+  updatedAt      DateTime? @updatedAt @db.Date
+  startAt        DateTime? @default(now()) @db.Date
   expireAt       DateTime? @db.Date
   isFreeDelivery Boolean?
-  delivery       Int?
+  deliveryFee    Float?
   codePromo      String?
   merchantId     String?
-  userId         String    @db.ObjectId
-  user           User      @relation(fields: [userId], references: [id])
+  sharedById     String    @db.ObjectId
+  sharedBy       User      @relation(fields: [sharedById], references: [id])
 
-  @@fulltext([text, title], map: "text_text_title_text")
+  @@fulltext([description, title], map: "text_text_title_text")
 }
 
 model Discussion {
@@ -64,7 +65,7 @@ model Discussion {
   votes         Int       @default(0)
   comments      Comment[]
   createdAt     DateTime  @default(now()) @db.Date
-  updatedAt     DateTime  @default(now()) @db.Date
+  updatedAt     DateTime  @updatedAt @db.Date
   merchantId    String?
   userId        String    @db.ObjectId
   user          User      @relation(fields: [userId], references: [id])
@@ -77,14 +78,15 @@ model User {
   id            String          @id @default(auto()) @map("_id") @db.ObjectId
   name          String
   email         String          @unique
+  username      String          @unique
   emailVerified DateTime?
-  image         String?
+  image         String
   accounts      Account[]
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
   createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
+  updatedAt     DateTime        @updatedAt @db.Date
 
   votesUp       String[]     @default([])
   votesDown     String[]     @default([])
@@ -110,7 +112,7 @@ model Account {
   session_state     String?
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @db.Date
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -125,7 +127,7 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @db.Date
 }
 
 model VerificationToken {
@@ -156,6 +158,5 @@ model Authenticator {
 enum Currency {
   EUR
   USD
-  GBP
   MAD
 }

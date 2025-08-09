@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { HiOutlineTruck, HiExternalLink } from "react-icons/hi";
 import AvatarImg from "../AvatarImg";
 import Temperature from "./Temperature";
 import PostedTime from "./PostedTime";
@@ -18,45 +16,44 @@ export type tDealCard = {
   slug: string;
   id: string;
   price: number;
-  oldPrice?: number;
+  oldPrice: number | null;
   currency: tCurrency;
-  thumbnail: string;
+  image: string;
   description: string;
   votes: number;
   storeName: string;
-  dealLink?: string;
-  codePromo?: string;
+  dealLink: string | null;
+  codePromo: string | null;
   postedDate: Date;
-  expiryDate?: Date;
-  deliveryFee?: number;
+  expireAt: Date | null;
+  deliveryFee: number | null;
   commentsCount: number;
   sharedBy: {
     username: string;
-    img: string;
+    image: string;
     id: string;
   };
 };
 
 const DealCard = ({
   title,
-  id,
   price,
   dealLink,
   currency,
-  thumbnail,
+  image,
   codePromo,
   description,
   oldPrice,
   votes,
   deliveryFee,
-  expiryDate,
+  expireAt,
   sharedBy,
   storeName,
   postedDate,
   commentsCount,
   slug,
 }: tDealCard) => {
-  const expired = isExpired(expiryDate);
+  const expired = isExpired(expireAt);
 
   return (
     <Link href={`/deal/${slug}`}>
@@ -73,7 +70,7 @@ const DealCard = ({
           <Temperature votes={votes} className="flex md:hidden w-full" />
           <div className="flex items-center justify-center py-2">
             <Image
-              src={thumbnail}
+              src={image}
               alt="Deal"
               width={128}
               height={128}
@@ -95,7 +92,7 @@ const DealCard = ({
         <div className="flex flex-col items-center col-span-2 md:col-span-3 p-2 h-full">
           <div className="w-full flex justify-between items-center">
             <Temperature votes={votes} className="hidden md:flex" />
-            <PostedTime postedDate={postedDate} expiryDate={expiryDate} />
+            <PostedTime postedDate={postedDate} expireAt={expireAt} />
           </div>
           <div className="w-full h-full flex flex-col">
             <div
@@ -139,7 +136,7 @@ const DealCard = ({
                 <span className="flex items-center gap-1 border rounded-full pe-2 cursor-pointer min-w-0 bg-gray-100 hover:bg-gray-200">
                   <AvatarImg
                     // className="w-5 h-5 shrink-0" /* avatar never shrinks */
-                    img={sharedBy.img}
+                    img={sharedBy.image}
                     username={sharedBy.username}
                     fallback={getInitials(sharedBy.username)}
                   />

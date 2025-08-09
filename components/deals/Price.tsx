@@ -6,9 +6,9 @@ import { Badge } from "@/components/ui/badge";
 
 type PriceProps = {
   price: number;
-  oldPrice?: number;
+  oldPrice: number | null;
   expired: boolean;
-  deliveryFee: number | undefined;
+  deliveryFee: number | null;
   currency: tCurrency;
 };
 

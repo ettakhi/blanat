@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { HiExternalLink } from "react-icons/hi";
 import { cn } from "@/lib/utils";
 
-type GoToDealProps = { codePromo?: string; dealLink?: string };
+type GoToDealProps = { codePromo: string | null; dealLink: string | null };
 
 export default function GoToDeal({ codePromo, dealLink }: GoToDealProps) {
   const handleClick = async (e: React.MouseEvent) => {
@@ -54,22 +54,21 @@ export default function GoToDeal({ codePromo, dealLink }: GoToDealProps) {
 
   // Fallback button for when there's only dealLink or neither
   return (
-    <Button
+    <button
       type="button"
       onClick={handleClick}
       className={cn(
-        "grow md:grow-0 cursor-pointer rounded-2xl whitespace-nowrap",
+        "grow md:grow-0 cursor-pointer rounded-2xl whitespace-nowrap px-4 py-1 text-sm font-medium transition-colors",
         {
           "bg-white text-cyan-600 hover:bg-cyan-500/10 border border-cyan-500/15":
             !dealLink,
           "text-white bg-cyan-600 hover:bg-cyan-700": dealLink,
         }
       )}
-      size="sm"
       aria-label={dealLink ? "Voir le deal" : "En savoir plus"}
     >
       {dealLink ? "Voir le deal" : "En savoir plus"}
       {dealLink && <HiExternalLink className="inline-block ml-1" />}
-    </Button>
+    </button>
   );
 }

@@ -3,12 +3,12 @@ import { expiredFormatDate, isExpired, timeAgo } from "@/lib/utils/date";
 
 const PostedTime = ({
   postedDate,
-  expiryDate,
+  expireAt,
 }: {
   postedDate: Date;
-  expiryDate: Date | undefined;
+  expireAt: Date | undefined | null;
 }) => {
-  const expired = isExpired(expiryDate);
+  const expired = isExpired(expireAt);
 
   if (expired) {
     return (
@@ -25,7 +25,7 @@ const PostedTime = ({
     // relativeDays: 0, // Show relative time for dates within the last 7 days
   });
 
-  const expiredDate = expiredFormatDate(expiryDate, {
+  const expiredDate = expiredFormatDate(expireAt, {
     locale: "en",
     useRelativeTime: true,
     expiredText: "Expires in",
@@ -35,11 +35,11 @@ const PostedTime = ({
     <div className="text-sm  ms-auto">
       <small
         className={cn(" borders rounded-lg px-2 py-1.5", {
-          "text-red-800 bg-red-100": expiryDate,
-          "text-gray-800 bg-gray-100": !expiryDate,
+          "text-red-800 bg-red-100": expireAt,
+          "text-gray-800 bg-gray-100": !expireAt,
         })}
       >
-        {expiryDate ? expiredDate : `Posted ${formatedDate}`}
+        {expireAt ? expiredDate : `Posted ${formatedDate}`}
       </small>
     </div>
   );

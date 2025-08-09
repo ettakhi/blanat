@@ -1,14 +1,26 @@
-import { auth } from "@/auth";
 import DealCard from "@/components/deals/DealCard";
-import { DEAL_DESCRIPTION, DEALS_MOCK, IMG_HAKIM } from "@/lib/constants";
+import { prisma } from "@/prisma";
+
+export const revalidate = false; // Cache indefinitely until manually revalidated, the default
 
 export default async function Home() {
-  // const session = await auth();
+  const deals = await prisma.deal.findMany({
+    include: {
+      sharedBy: {
+        select: {
+          image: true,
+          id: true,
+          username: true,
+        },
+      },
+    },
+  });
+  // console.log("deals", deals);
 
   return (
     <div>
-      {DEALS_MOCK.map((deal, index) => (
-        <DealCard key={index} {...deal} />
+      {deals.map((deal) => (
+        <DealCard key={deal.id} {...deal} />
       ))}
     </div>
   );
