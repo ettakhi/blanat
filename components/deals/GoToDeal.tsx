@@ -4,11 +4,15 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { HiExternalLink } from "react-icons/hi";
+import { cn } from "@/lib/utils";
 
 type GoToDealProps = { codePromo?: string; dealLink?: string };
 
 export default function GoToDeal({ codePromo, dealLink }: GoToDealProps) {
   const handleClick = async (e: React.MouseEvent) => {
+    // Only prevent default and handle click if we have a dealLink
+    if (!dealLink) return;
+
     e.preventDefault(); // cancel the parent <Link> default nav
     e.stopPropagation(); // stop bubbling to the card
 
@@ -21,43 +25,51 @@ export default function GoToDeal({ codePromo, dealLink }: GoToDealProps) {
       }
     }
 
-    if (!dealLink) return;
-
     window.open(dealLink, "_blank", "noopener,noreferrer");
   };
 
-  if (!codePromo) {
+  // Show promo code version if both codePromo and dealLink exist
+  if (codePromo && dealLink) {
     return (
-      <Button
+      <button
         type="button"
         onClick={handleClick}
-        className="grow md:grow-0 cursor-pointer rounded-2xl text-white bg-cyan-600 hover:bg-cyan-700 whitespace-nowrap"
-        size="sm"
-        aria-label="Voir le deal"
+        className="grow md:grow-0 group flex items-center rounded-full border border-dashed border-cyan-600 hover:border-cyan-800 overflow-hidden cursor-pointer w-full"
+        aria-label="Copier & utiliser le code"
       >
-        Voir le deal <HiExternalLink className="inline-block ml-1" />
-      </Button>
+        <span className="flex-1 min-w-0 px-3 group-hover:text-cyan-700 text-cyan-600 truncate text-center">
+          {codePromo}
+        </span>
+
+        <div className="shrink-0 flex items-center gap-1 rounded-full m-0.5 bg-cyan-600 group-hover:bg-cyan-700 px-3 py-0.5 text-white whitespace-nowrap">
+          <span className="hidden md:inline-block">
+            Copier & utiliser le code
+          </span>
+          <span className="md:hidden">Utiliser</span>
+          <HiExternalLink className="inline-block ml-1" />
+        </div>
+      </button>
     );
   }
 
+  // Fallback button for when there's only dealLink or neither
   return (
-    <button
+    <Button
       type="button"
       onClick={handleClick}
-      className="grow md:grow-0 group flex items-center rounded-full border border-dashed border-cyan-600 hover:border-cyan-800 overflow-hidden cursor-pointer w-full"
-      aria-label="Copier & utiliser le code"
+      className={cn(
+        "grow md:grow-0 cursor-pointer rounded-2xl whitespace-nowrap",
+        {
+          "bg-white text-cyan-600 hover:bg-cyan-500/10 border border-cyan-500/15":
+            !dealLink,
+          "text-white bg-cyan-600 hover:bg-cyan-700": dealLink,
+        }
+      )}
+      size="sm"
+      aria-label={dealLink ? "Voir le deal" : "En savoir plus"}
     >
-      <span className="flex-1 min-w-0 px-3 group-hover:text-cyan-700 text-cyan-600 truncate text-center">
-        {codePromo}
-      </span>
-
-      <div className="shrink-0 flex items-center gap-1 rounded-full m-0.5 bg-cyan-600 group-hover:bg-cyan-700 px-3 py-0.5 text-white whitespace-nowrap">
-        <span className="hidden md:inline-block">
-          Copier & utiliser le code
-        </span>
-        <span className="md:hidden">Utiliser</span>
-        <HiExternalLink className="inline-block ml-1" />
-      </div>
-    </button>
+      {dealLink ? "Voir le deal" : "En savoir plus"}
+      {dealLink && <HiExternalLink className="inline-block ml-1" />}
+    </Button>
   );
 }
